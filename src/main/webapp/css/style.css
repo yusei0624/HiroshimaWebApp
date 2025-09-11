@@ -1,0 +1,181 @@
+/* --- Google Fontsの読み込み --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+/* --- 全体の基本設定 --- */
+body {
+    font-family: 'Noto Sans JP', sans-serif; /* 読みやすいフォントに変更 */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f9fa; /* 背景色を少し柔らかく */
+    color: #343a40; /* 文字色を少し柔らかく */
+}
+
+main {
+    flex: 1;
+}
+
+.container {
+    max-width: 800px; /* 最大幅を設定して中央寄せ */
+    margin: 30px auto; /* 上下のマージンと左右の中央寄せ */
+    padding: 0 15px; /* 左右のパディング */
+}
+
+/* --- ヘッダーとフッター --- */
+.header {
+    background-color: #ffffff;
+    padding: 15px 30px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 影を追加 */
+}
+.header nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    transition: color 0.2s; /* ホバー時の色の変化を滑らかに */
+}
+.header nav a:hover {
+    color: #0056b3; /* ホバー時の色 */
+    text-decoration: underline;
+}
+
+.footer {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #dee2e6;
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+/* --- ボタンの共通スタイル --- */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    margin: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 影を追加 */
+    transition: transform 0.2s, box-shadow 0.2s; /* ホバー時の動きを滑らかに */
+    cursor: pointer;
+}
+.btn:hover {
+    transform: translateY(-2px); /* 少し浮き上がる */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+.btn-primary { background-color: #007bff; }
+.btn-secondary { background-color: #6c757d; }
+.btn-next { background-color: #28a745; padding: 10px 20px;}
+
+/* --- 各ページの個別スタイル --- */
+.top-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* result.jsp */
+.result-box {
+    border-radius: 10px;
+    padding: 40px;
+    margin: 20px 0;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* 影を少し濃く */
+}
+.result-box .result-title {
+    font-size: 3em;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* 文字に影を追加 */
+}
+.result-box.correct { background: linear-gradient(45deg, #28a745, #218838); border: 3px solid #1e7e34; }
+.result-box.incorrect { background: linear-gradient(45deg, #dc3545, #c82333); border: 3px solid #b21f2d; }
+.explanation-box {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* glossary.jsp */
+.search-box {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #dee2e6;
+    display: flex; /* 横並びにする */
+    gap: 10px; /* 要素間の隙間 */
+}
+.search-box input[type="text"] {
+    flex-grow: 1; /* 横幅を自動で伸ばす */
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+.search-box input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.search-box input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+.sort-links {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+}
+.glossary-item {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.glossary-item h3 { margin-top: 0; }
+
+/* --- 写真と外部リンク --- */
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #dee2e6;
+}
+.external-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* --- レスポンシブ対応 --- */
+@media (max-width: 600px) {
+    .container {
+        margin: 15px auto;
+    }
+    .btn {
+        width: 90%;
+        padding: 15px;
+    }
+    .search-box {
+        flex-direction: column;
+    }
+    .result-box .result-title {
+        font-size: 2.2em;
+    }
+}

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
-<%-- 共通のヘッダーを読み込む --%>
+
 <jsp:include page="/WEB-INF/jsp/common/header.jsp" />
 
 <div class="top-container"> 
@@ -18,5 +18,5 @@
     </div>
 </div>
 
-<%-- 共通のフッターを読み込む --%>
+
 <jsp:include page="/WEB-INF/jsp/common/footer.jsp" />

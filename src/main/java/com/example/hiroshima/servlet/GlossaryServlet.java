@@ -23,7 +23,6 @@ public class GlossaryServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        // JSPから送信されたパラメータを取得
         String keyword = request.getParameter("keyword");
         String initial = request.getParameter("initial");
 
@@ -35,18 +34,15 @@ public class GlossaryServlet extends HttpServlet {
         try {
             conn = DBManager.getConnection();
             
-            // SQL文を動的に組み立てるための準備
             StringBuilder sql = new StringBuilder("SELECT * FROM glossaries WHERE 1=1");
             List<Object> params = new ArrayList<>();
 
-            // キーワード検索の条件を追加
             if (keyword != null && !keyword.isEmpty()) {
                 sql.append(" AND (term LIKE ? OR description LIKE ?)");
                 params.add("%" + keyword + "%");
                 params.add("%" + keyword + "%");
             }
             
-            // 50音順絞り込みの条件を追加
             if (initial != null && !initial.isEmpty()) {
                 String start = "";
                 String end = "";
@@ -63,18 +59,16 @@ public class GlossaryServlet extends HttpServlet {
                     case "わ": start = "わ"; end = "ん"; break;
                 }
                 if (!start.isEmpty() && !end.isEmpty()) {
-                    // term_yomiカラムを範囲指定で検索
                     sql.append(" AND term_yomi >= ? AND term_yomi < ?");
                     params.add(start);
                     params.add(getNextInitial(end)); 
                 }
             }
 
-            sql.append(" ORDER BY term_yomi;"); // 読み仮名順で並び替え
+            sql.append(" ORDER BY term_yomi;");
             
             pstmt = conn.prepareStatement(sql.toString());
             
-            // パラメータをSQL文にセット
             for (int i = 0; i < params.size(); i++) {
                 pstmt.setObject(i + 1, params.get(i));
             }
@@ -87,6 +81,8 @@ public class GlossaryServlet extends HttpServlet {
                 glossary.setTerm(rs.getString("term"));
                 glossary.setDescription(rs.getString("description"));
                 glossary.setTermYomi(rs.getString("term_yomi"));
+                // ★★★ この行で外部リンクの情報を取得・セットします ★★★
+                glossary.setExternalLink(rs.getString("external_link"));
                 glossaryList.add(glossary);
             }
         } catch (SQLException e) {

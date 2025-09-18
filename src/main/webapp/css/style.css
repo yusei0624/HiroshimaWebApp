@@ -1,181 +1,234 @@
-/* --- Google Fontsの読み込み --- */
+/* Google Fonts の読み込み */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
 
-/* --- 全体の基本設定 --- */
+/* 全体の基本設定 */
 body {
-    font-family: 'Noto Sans JP', sans-serif; /* 読みやすいフォントに変更 */
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #f8f9fa; /* 少しグレーがかった背景色 */
+    color: #333;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f8f9fa; /* 背景色を少し柔らかく */
-    color: #343a40; /* 文字色を少し柔らかく */
 }
 
 main {
-    flex: 1;
+    flex: 1; /* フッターを一番下に固定するための設定 */
+    width: 100%;
+    max-width: 800px; /* PCでの最大幅を指定 */
+    margin: 0 auto;   /* 中央寄せ */
+    padding: 20px;
+    box-sizing: border-box; /* paddingを含めて幅を計算 */
 }
 
-.container {
-    max-width: 800px; /* 最大幅を設定して中央寄せ */
-    margin: 30px auto; /* 上下のマージンと左右の中央寄せ */
-    padding: 0 15px; /* 左右のパディング */
-}
-
-/* --- ヘッダーとフッター --- */
-.header {
-    background-color: #ffffff;
-    padding: 15px 30px;
-    text-align: center;
-    border-bottom: 1px solid #dee2e6;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 影を追加 */
-}
-.header nav a {
-    margin: 0 15px;
-    text-decoration: none;
+a {
     color: #007bff;
-    font-weight: bold;
-    transition: color 0.2s; /* ホバー時の色の変化を滑らかに */
+    text-decoration: none;
 }
-.header nav a:hover {
-    color: #0056b3; /* ホバー時の色 */
+a:hover {
     text-decoration: underline;
 }
 
-.footer {
-    background-color: #ffffff;
-    padding: 20px;
+/* ヘッダーとフッター */
+.header {
+    background-color: white;
+    padding: 15px 20px;
     text-align: center;
-    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 影を追加 */
+}
+.header h1 {
+    margin: 0 0 10px 0;
+}
+.header nav a {
+    margin: 0 15px;
+    font-weight: bold;
+}
+.footer {
+    background-color: #e9ecef;
+    padding: 15px 20px;
+    text-align: center;
+    border-top: 1px solid #ddd;
     font-size: 0.9em;
     color: #6c757d;
 }
 
-/* --- ボタンの共通スタイル --- */
-.btn {
+/* 成績表示エリア */
+.score-board {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px auto 0;
     display: inline-block;
-    padding: 12px 30px;
-    margin: 10px;
-    font-size: 1.1em;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 影を追加 */
-    transition: transform 0.2s, box-shadow 0.2s; /* ホバー時の動きを滑らかに */
-    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
-.btn:hover {
-    transform: translateY(-2px); /* 少し浮き上がる */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-.btn-primary { background-color: #007bff; }
-.btn-secondary { background-color: #6c757d; }
-.btn-next { background-color: #28a745; padding: 10px 20px;}
 
-/* --- 各ページの個別スタイル --- */
+/* index.jsp のスタイル */
 .top-container {
     text-align: center;
     margin-top: 50px;
 }
+.btn-group {
+    margin-top: 40px;
+}
+.btn {
+    display: inline-block;
+    padding: 15px 40px;
+    margin: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s; /* アニメーション効果 */
+}
+.btn:hover {
+    transform: translateY(-2px); /* 少し浮き上がる */
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+    text-decoration: none;
+}
+.btn-primary {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+}
+.btn-secondary {
+    background: linear-gradient(45deg, #6c757d, #495057);
+}
 
-/* result.jsp */
+/* quiz.jsp のレイアウト修正 */
+.question-text {
+    font-size: 1.5em; 
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.choices {
+    display: flex;
+    flex-direction: column; /* 縦に並べる */
+    gap: 15px; /* 選択肢の間隔 */
+    margin-bottom: 30px;
+}
+.choices label {
+    display: block;
+    background-color: white;
+    padding: 15px 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.choices label:hover {
+    background-color: #f0f8ff; /* マウスを乗せた時の色 */
+}
+.submit-area {
+    text-align: center;
+}
+
+/* result.jsp のスタイル */
 .result-box {
     border-radius: 10px;
     padding: 40px;
-    margin: 20px 0;
+    margin-bottom: 20px;
     text-align: center;
     color: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* 影を少し濃く */
+    border-width: 5px;
+    border-style: solid;
 }
-.result-box .result-title {
+.result-title {
     font-size: 3em;
     font-weight: bold;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* 文字に影を追加 */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* 文字に影 */
 }
-.result-box.correct { background: linear-gradient(45deg, #28a745, #218838); border: 3px solid #1e7e34; }
-.result-box.incorrect { background: linear-gradient(45deg, #dc3545, #c82333); border: 3px solid #b21f2d; }
+.correct {
+    background: linear-gradient(45deg, #28a745, #1e7e34); /* 正解の色 (緑) */
+    border-color: #1e7e34;
+}
+.incorrect {
+    background: linear-gradient(45deg, #dc3545, #b21f2d); /* 不正解の色 (赤) */
+    border-color: #b21f2d;
+}
 .explanation-box {
-    background-color: #ffffff;
+    background-color: white;
     border: 1px solid #dee2e6;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.btn-next {
+    background: linear-gradient(45deg, #17a2b8, #117a8b);
 }
 
-/* glossary.jsp */
+/* glossary.jsp のスタイル */
 .search-box {
-    background-color: #ffffff;
-    padding: 20px;
+    background-color: white;
+    padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
-    border: 1px solid #dee2e6;
-    display: flex; /* 横並びにする */
-    gap: 10px; /* 要素間の隙間 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 .search-box input[type="text"] {
-    flex-grow: 1; /* 横幅を自動で伸ばす */
-    padding: 10px;
-    border: 1px solid #ced4da;
+    padding: 8px;
+    width: 300px;
+    border: 1px solid #ccc;
     border-radius: 5px;
 }
 .search-box input[type="submit"] {
-    padding: 10px 20px;
+    padding: 8px 15px;
     border: none;
     background-color: #007bff;
     color: white;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.2s;
-}
-.search-box input[type="submit"]:hover {
-    background-color: #0056b3;
 }
 .sort-links {
     margin-bottom: 20px;
     padding: 10px;
-    background-color: #e9ecef;
-    border-radius: 5px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 .glossary-item {
-    background-color: #fff;
+    background-color: white;
     border: 1px solid #dee2e6;
     padding: 20px;
-    margin-bottom: 15px;
     border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
-.glossary-item h3 { margin-top: 0; }
-
-/* --- 写真と外部リンク --- */
-.responsive-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #dee2e6;
+.glossary-item h3 {
+    margin: 0 0 5px 0;
+}
+.glossary-item p {
+    margin: 0;
 }
 .external-link {
-    display: inline-block;
     margin-top: 10px;
+    font-size: 0.9em;
+}
+.external-link a {
     font-weight: bold;
 }
 
-/* --- レスポンシブ対応 --- */
+/* スマートフォン表示への対応（レスポンシブデザイン） */
 @media (max-width: 600px) {
-    .container {
-        margin: 15px auto;
+    main {
+        padding: 10px;
     }
     .btn {
-        width: 90%;
+        width: 100%;
+        box-sizing: border-box;
         padding: 15px;
     }
-    .search-box {
-        flex-direction: column;
+    .search-box input[type="text"] {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
     }
-    .result-box .result-title {
-        font-size: 2.2em;
+    .search-box input[type="submit"] {
+        width: 100%;
     }
 }
+

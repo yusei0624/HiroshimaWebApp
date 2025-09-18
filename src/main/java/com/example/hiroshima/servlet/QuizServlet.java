@@ -28,7 +28,7 @@ public class QuizServlet extends HttpServlet {
 
         if (action != null && action.equals("start")) {
             session.setAttribute("questionNum", 1);
-            // ★★★ クイズ開始時に成績をリセット ★★★
+            // クイズの開始時に成績をリセット
             session.setAttribute("totalCount", 0);
             session.setAttribute("correctCount", 0);
         } else {

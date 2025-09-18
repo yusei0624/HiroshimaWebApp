@@ -2,14 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
-<%-- 共通ヘッダーを読み込み --%>
+
 <jsp:include page="/WEB-INF/jsp/common/header.jsp" />
 
 <div class="container">
     <h2>用語集</h2>
     <p>広島の魅力に関連するキーワードです。</p>
 
-    <%-- キーワード検索フォーム --%>
+    <%-- キーワード検索のフォーム --%>
     <div class="search-box">
         <form action="${pageContext.request.contextPath}/GlossaryServlet" method="get">
             <input type="text" name="keyword" placeholder="キーワードで検索">
@@ -17,7 +17,7 @@
         </form>
     </div>
 
-    <%-- 50音順絞り込みリンク --%>
+    <%-- 50音順検索 --%>
     <div class="sort-links">
         <strong>50音順で探す:</strong><br>
         <a href="${pageContext.request.contextPath}/GlossaryServlet?initial=あ">あ行</a> |
@@ -33,13 +33,13 @@
         <a href="${pageContext.request.contextPath}/GlossaryServlet">すべて表示</a>
     </div>
     
-    <%-- サーブレットから渡された用語リストをループで表示 --%>
+    <%-- 用語リストをループで表示 --%>
     <c:forEach var="glossary" items="${glossaryList}">
         <div class="glossary-item">
             <h3>${glossary.term}</h3>
             <p>${glossary.description}</p>
             
-            <%-- ★★★ 外部リンクが存在する場合のみ、リンクを表示する ★★★ --%>
+            <%--  外部リンクを表示する  --%>
             <c:if test="${not empty glossary.externalLink}">
                 <div class="external-link">
                     <a href="${glossary.externalLink}" target="_blank" rel="noopener noreferrer">
@@ -52,6 +52,6 @@
     
 </div>
 
-<%-- 共通フッターを読み込み --%>
+
 <jsp:include page="/WEB-INF/jsp/common/footer.jsp" />
 

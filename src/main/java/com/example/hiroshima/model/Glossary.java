@@ -5,12 +5,12 @@ public class Glossary {
     private String term;
     private String description;
     private String termYomi;
-    private String externalLink; // 外部リンク用の変数を追加
+    private String externalLink; 
 
-    // デフォルトコンストラクタ
+   
     public Glossary() {}
 
-    // 以下、getterとsetter
+  
     public int getId() {
         return id;
     }

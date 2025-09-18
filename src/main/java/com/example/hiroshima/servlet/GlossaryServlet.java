@@ -81,7 +81,7 @@ public class GlossaryServlet extends HttpServlet {
                 glossary.setTerm(rs.getString("term"));
                 glossary.setDescription(rs.getString("description"));
                 glossary.setTermYomi(rs.getString("term_yomi"));
-                // ★★★ この行で外部リンクの情報を取得・セットします ★★★
+                // 情報を取得・セットします
                 glossary.setExternalLink(rs.getString("external_link"));
                 glossaryList.add(glossary);
             }

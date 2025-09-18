@@ -14,37 +14,37 @@ public class AnswerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // ★★★ セッションオブジェクトを取得 ★★★
+        //  セッションを取得 
         HttpSession session = request.getSession();
 
-        // JSPからのデータを受け取る
+        // JSPからデータを受け取る
         String userAnswerStr = request.getParameter("userAnswer");
         String correctAnswerStr = request.getParameter("correctAnswer");
         String explanation = request.getParameter("explanation");
         String imageUrl = request.getParameter("imageUrl");
         String externalLink = request.getParameter("externalLink");
         
-        // 正誤判定
+        // 正解不正化の判定
         boolean isCorrect = userAnswerStr != null && userAnswerStr.equals(correctAnswerStr);
         String resultMessage = isCorrect ? "正解！" : "残念、不正解…";
 
-        // ★★★ セッションから現在の成績を取得 ★★★
+        //  セッションから現在の成績を取得 
         Integer totalCount = (Integer) session.getAttribute("totalCount");
         Integer correctCount = (Integer) session.getAttribute("correctCount");
         
-        // セッションに初めて成績を記録する場合の初期化
+        // セッションに初めて成績を記録する時の初期化
         if(totalCount == null) totalCount = 0;
         if(correctCount == null) correctCount = 0;
 
-        // ★★★ 総問題数をカウントアップ ★★★
+        // 問題の合計をカウント
         totalCount++;
         
-        // ★★★ 正解なら正解数もカウントアップ ★★★
+        // 正解なら正解数もカウント
         if(isCorrect) {
             correctCount++;
         }
         
-        // ★★★ 更新した成績をセッションに保存 ★★★
+        //  更新した成績を保存 
         session.setAttribute("totalCount", totalCount);
         session.setAttribute("correctCount", correctCount);
         
@@ -55,7 +55,6 @@ public class AnswerServlet extends HttpServlet {
         request.setAttribute("imageUrl", imageUrl);
         request.setAttribute("externalLink", externalLink);
         
-        // result.jspにフォワード
         request.getRequestDispatcher("/result.jsp").forward(request, response);
     }
 }

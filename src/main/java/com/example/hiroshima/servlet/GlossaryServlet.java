@@ -38,11 +38,20 @@ public class GlossaryServlet extends HttpServlet {
             List<Object> params = new ArrayList<>();
 
             if (keyword != null && !keyword.isEmpty()) {
-                // ★★★ 修正点：検索対象に term_yomi を追加 ★★★
-                sql.append(" AND (term LIKE ? OR description LIKE ? OR term_yomi LIKE ?)");
-                params.add("%" + keyword + "%");
-                params.add("%" + keyword + "%");
-                params.add("%" + keyword + "%"); // 読み仮名も検索対象に
+                // ★★★ ご提案のロジックを実装 ★★★
+                // キーワードが1文字の場合と、2文字以上の場合で検索方法を切り替える
+                if (keyword.length() == 1) {
+                    // 1文字の場合：用語名(term)と読み仮名(term_yomi)の前方一致検索のみ
+                    sql.append(" AND (term LIKE ? OR term_yomi LIKE ?)");
+                    params.add(keyword + "%"); // term: 前方一致
+                    params.add(keyword + "%"); // term_yomi: 前方一致
+                } else {
+                    // 2文字以上の場合：用語名と読み仮名は前方一致、解説文(description)は部分一致で検索
+                    sql.append(" AND (term LIKE ? OR term_yomi LIKE ? OR description LIKE ?)");
+                    params.add(keyword + "%"); // term: 前方一致
+                    params.add(keyword + "%"); // term_yomi: 前方一致
+                    params.add("%" + keyword + "%"); // description: 部分一致
+                }
             }
             
             if (initial != null && !initial.isEmpty()) {

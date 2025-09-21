@@ -38,9 +38,11 @@ public class GlossaryServlet extends HttpServlet {
             List<Object> params = new ArrayList<>();
 
             if (keyword != null && !keyword.isEmpty()) {
-                sql.append(" AND (term LIKE ? OR description LIKE ?)");
+                // ★★★ 修正点：検索対象に term_yomi を追加 ★★★
+                sql.append(" AND (term LIKE ? OR description LIKE ? OR term_yomi LIKE ?)");
                 params.add("%" + keyword + "%");
                 params.add("%" + keyword + "%");
+                params.add("%" + keyword + "%"); // 読み仮名も検索対象に
             }
             
             if (initial != null && !initial.isEmpty()) {
@@ -81,7 +83,6 @@ public class GlossaryServlet extends HttpServlet {
                 glossary.setTerm(rs.getString("term"));
                 glossary.setDescription(rs.getString("description"));
                 glossary.setTermYomi(rs.getString("term_yomi"));
-                // 情報を取得・セットします
                 glossary.setExternalLink(rs.getString("external_link"));
                 glossaryList.add(glossary);
             }

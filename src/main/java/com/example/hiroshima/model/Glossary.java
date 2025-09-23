@@ -5,12 +5,9 @@ public class Glossary {
     private String term;
     private String description;
     private String termYomi;
-    private String externalLink; 
+    private String externalLink;
 
-   
-    public Glossary() {}
-
-  
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -42,4 +39,3 @@ public class Glossary {
         this.externalLink = externalLink;
     }
 }
-

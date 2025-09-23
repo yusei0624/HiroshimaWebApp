@@ -9,10 +9,9 @@ public class Quiz {
     private String choice3;
     private int answer;
     private String explanation;
-    private String imageUrl;
     private String externalLink;
 
-    
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -61,16 +60,10 @@ public class Quiz {
     public void setExplanation(String explanation) {
         this.explanation = explanation;
     }
-    public String getImageUrl() { 
-    	return imageUrl;
-    }
-    public void setImageUrl(String imageUrl) {
-    	this.imageUrl = imageUrl;
-    }
     public String getExternalLink() {
-    	return externalLink; 
+        return externalLink;
     }
     public void setExternalLink(String externalLink) {
-    	this.externalLink = externalLink; 
+        this.externalLink = externalLink;
     }
 }

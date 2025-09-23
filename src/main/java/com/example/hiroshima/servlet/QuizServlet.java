@@ -24,17 +24,23 @@ public class QuizServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
 
-        int questionNum = 1;
+        int questionNum;
 
+        // クイズ開始時
         if (action != null && action.equals("start")) {
-            session.setAttribute("questionNum", 1);
-            // クイズの開始時に成績をリセット
+            // 問題番号と成績をリセット
+            questionNum = 1;
+            session.setAttribute("questionNum", questionNum);
             session.setAttribute("totalCount", 0);
             session.setAttribute("correctCount", 0);
+            
+        // 次の問題へ進む時
         } else {
+            // セッションから問題番号を取得して+1する
             Integer numInSession = (Integer) session.getAttribute("questionNum");
             if (numInSession == null) {
-                questionNum = 1;
+                // 何らかの理由でセッションが切れた場合は1から
+                questionNum = 1; 
             } else {
                 questionNum = numInSession + 1;
             }
@@ -62,7 +68,6 @@ public class QuizServlet extends HttpServlet {
                 quiz.setChoice3(rs.getString("choice3"));
                 quiz.setAnswer(rs.getInt("answer"));
                 quiz.setExplanation(rs.getString("explanation"));
-                quiz.setImageUrl(rs.getString("image_url"));
                 quiz.setExternalLink(rs.getString("external_link"));
             }
         } catch (SQLException e) {
@@ -79,8 +84,8 @@ public class QuizServlet extends HttpServlet {
         }
 
         request.setAttribute("quiz", quiz);
-        request.setAttribute("questionNum", questionNum);
+        // JSPへ渡す問題番号を更新
+        request.setAttribute("questionNum", questionNum); 
         request.getRequestDispatcher("/quiz.jsp").forward(request, response);
     }
 }
-

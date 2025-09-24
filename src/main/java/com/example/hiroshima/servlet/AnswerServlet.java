@@ -50,7 +50,6 @@ public class AnswerServlet extends HttpServlet {
         session.setAttribute("totalCount", totalCount);
         session.setAttribute("correctCount", correctCount);
         
-        // ★★★ ここからが変更点 ★★★
         
         // 10問未満の場合
         if (totalCount < TOTAL_QUESTIONS) {

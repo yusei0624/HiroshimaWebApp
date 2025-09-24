@@ -21,10 +21,10 @@ Webサーバー: Apache Tomcat 10.1
 	これにより、hiroshima_quiz_dbデータベース、quizzesテーブル、glossariesテーブルが作成され、初期データが登録されます。
 
 	3.2. データベース接続情報の確認
-	src/main/java/com/example/hiroshima/db/DBManager.java ファイルを開き、以下の3つの定数がご自身のMySQL環境と一致しているか確認してください。必要に応じて修正をお願いいたします。
+	src/main/java/com/example/hiroshima/db/DBManager.java ファイルを開き、以下の3つの値が自身のMySQL環境と一致しているか確認してください。
 	private static final String URL = "jdbc:mysql://localhost/hiroshima_quiz_db";
-	private static final String USER = "your_username"; // ご自身のMySQLユーザー名 (例: "root")
-	private static final String PASSWORD = "your_password"; // ご自身のMySQLパスワード
+	private static final String USER = "your_username"; // ユーザー名 (例: "root")
+	private static final String PASSWORD = "your_password"; // MySQLパスワード
 
 	3.3. Eclipseへのプロジェクトのインポートと実行
 	Eclipseで本プロジェクトをインポートします。

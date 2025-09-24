@@ -6,7 +6,7 @@ CREATE DATABASE IF NOT EXISTS `hiroshima_quiz_db` DEFAULT CHARACTER SET utf8mb4 
 
 USE `hiroshima_quiz_db`;
 
--- `quizzes` テーブルを作成 (image_url カラムを削除)
+-- `quizzes` テーブルを作成 
 CREATE TABLE `quizzes` (
   `id` int NOT NULL AUTO_INCREMENT,
   `category` varchar(50) DEFAULT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE `quizzes` (
   PRIMARY KEY (`id`)
 );
 
--- `glossaries` テーブルを作成 (image_url カラムを削除)
+-- `glossaries` テーブルを作成 
 CREATE TABLE `glossaries` (
   `id` int NOT NULL AUTO_INCREMENT,
   `term` varchar(100) NOT NULL,

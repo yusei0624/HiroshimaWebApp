@@ -12,9 +12,9 @@
         <%@ include file="WEB-INF/jsp/common/header.jsp" %>
         
         <main>
-            <div class="result-container" style="text-align: center;"> <%-- 中央寄せを追加 --%>
+            <div class="result-container" style="text-align: center;"> 
                 <h2>最終結果</h2>
-                <p class="final-score" style="font-size: 1.5em; margin: 20px 0;"> <%-- スタイル調整 --%>
+                <p class="final-score" style="font-size: 1.5em; margin: 20px 0;"> 
                     10問中、<span class="score-highlight" style="font-size: 2em; color: #dc3545; font-weight: bold;">${sessionScope.correctCount}</span> 問正解です！
                 </p>
                 
@@ -37,8 +37,8 @@
                     }
                 %>
 
-                <div class="button-container" style="margin-top: 30px;"> <%-- ボタン上部の余白を追加 --%>
-                    <%-- ★★★ ここを変更 ★★★ --%>
+                <div class="button-container" style="margin-top: 30px;"> 
+                    
                     <a href="QuizServlet?action=start" class="btn btn-primary">もう一度挑戦する</a>
                     <a href="index.jsp" class="btn btn-secondary">トップに戻る</a>
                 </div>

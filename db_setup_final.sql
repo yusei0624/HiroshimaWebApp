@@ -34,7 +34,7 @@ CREATE TABLE `glossaries` (
 
 -- `quizzes` テーブルにデータを登録
 -- 全18問
-INSERT INTO `quizzes` (`id`, `category`, `question`, `choice1`, `choice2`, `choice3`, `answer`, `explanation`, `image_url`, `external_link`) VALUES
+INSERT INTO `quizzes` (`id`, `category`, `question`, `choice1`, `choice2`, `choice3`, `answer`, `explanation`, `external_link`) VALUES
 (1,'産業','広島県に本社を置く企業で、平均年収ランキング1位（984万円）を誇る、半導体などを製造する装置の会社はどこでしょう？','マツダ株式会社','ローツェ株式会社','株式会社大創産業',2,'マツダは売上高でトップですが、年収トップはローツェ株式会社です。高い技術力を持つ企業が広島の経済を支えています。','https://www.rorze.com/'),
 (2,'産業','100円ショップ「DAISO」を運営する株式会社大創産業の本社があるのは、広島県のどこでしょう？','広島市','呉市','東広島市',3,'実は、世界的な企業であるダイソーの本社は広島県東広島市にあります。広島の隠れた自慢の一つです。','https://www.daiso-sangyo.co.jp/'),
 (3,'自然','広島県尾道市と愛媛県今治市を結び「サイクリストの聖地」として世界的に有名な絶景ルートの名前は何でしょう？','やまなみ街道','しまなみ海道','ゆめしま海道',2,'しまなみ海道は、日本で初めて海峡を横断できるサイクリングロードが併設された道で、多くのサイクリストを魅了しています。','https://dive-hiroshima.com/feature/island-shimanami/'),
@@ -55,7 +55,7 @@ INSERT INTO `quizzes` (`id`, `category`, `question`, `choice1`, `choice2`, `choi
 (18, '食文化', '瀬戸内海で獲れる小魚「小イワシ」。広島では刺身で食べるのが一般的ですが、その独特な調理法（手でさばくこと）を何と呼ぶでしょう？', '手開き', '指ずり', 'せごし', 1, '包丁を使わず、指先だけで頭と内臓を取り、骨を抜いていく伝統的な技法です。これにより、身を傷つけずに新鮮なまま食べることができます。', 'https://www.westjr.co.jp/company/info/issue/bsignal/13_vol_149/flavor/index.html');
 
 -- `glossaries` テーブルにデータを登録
-INSERT INTO `glossaries` (`id`, `term`, `description`, `term_yomi`, `image_url`, `external_link`) VALUES
+INSERT INTO `glossaries` (`id`, `term`, `description`, `term_yomi`, `external_link`) VALUES
 (1,'一銭洋食','戦後の食料不足の時代に、安くてお腹いっぱいになる食事として、この「一銭洋食」から発展しました。','いっせんようしょく','https://www.maff.go.jp/j/keikaku/syokubunka/k_ryouri/search_menu/menu/42_7_hiroshima.html'),
 (2,'五色岩','この五色岩が見られるのは仙酔島だけで、仙人が住んでいたという伝説も残る神秘的な場所です。','ごしきいわ','https://visittomonoura.com/2020/01/976/'),
 (3,'しまなみ海道','しまなみ海道は、日本で初めて海峡を横断できるサイクリングロードが併設された道で、多くのサイクリストを魅了しています。','しまなみかいどう','https://dive-hiroshima.com/feature/island-shimanami/'),
@@ -64,7 +64,7 @@ INSERT INTO `glossaries` (`id`, `term`, `description`, `term_yomi`, `image_url`,
 (6,'ひろしまアニメーションシーズン','かつての「広島国際アニメーションフェスティバル」の精神を引き継ぎ、平和のメッセージを込めて開催される国際的な映画祭です。','ひろしまあにめーしょんしーずん','https://animation.hiroshimafest.org/about/'),
 (7,'レモン鍋','広島産のレモンを使ったさっぱりとした味わいが人気を呼び、今では新しい広島名物として定着しつつあります。','れもんなべ','https://dive-hiroshima.com/feature/ichioshi-lemon/'),
 (8,'ローツェ株式会社','マツダは売上高でトップですが、年収トップはローツェ株式会社です。高い技術力を持つ企業が広島の経済を支えています。','ろーつぇかぶしきがいしゃ','https://www.rorze.com/'),
-(9,'ワニ料理','ワニとは、実はサメのことです。山間部では貴重なたんぱく源として、ハレの日に食べられてきました。','わにりょうり',,'https://www.nisshin-oillio.com/report/kikou/vol16.html'),
+(9,'ワニ料理','ワニとは、実はサメのことです。山間部では貴重なたんぱく源として、ハレの日に食べられてきました。','わにりょうり','https://www.nisshin-oillio.com/report/kikou/vol16.html'),
 (10, 'ヒロテック', '広島市に本社を置く、世界的な自動車部品・生産設備メーカーです。', 'ひろてっく','https://www.hirotec.co.jp/'),
 (11, 'ウッドワン', '廿日市市に本社を置く木質総合建材メーカー。無垢材を使った住宅設備で知られています。', 'うっどわん', 'https://www.woodone.co.jp/company/'),
 (12, 'サタケ', '東広島市に本社を置く食品産業機械メーカー。精米機や無洗米技術で世界をリードしています。', 'さたけ', 'https://www.satake-japan.co.jp/'),

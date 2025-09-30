@@ -3,16 +3,16 @@
 
 1. 概要
 本アプリケーションは、インストラクショナル・デザインに基づき開発された、広島の魅力をクイズ形式で学習するWeb教材です。
-開発言語: Java (Jakarta Servlet 6.0, JSP 4.0)
-データベース: MySQL 8.0
-Webサーバー: Apache Tomcat 10.1
+開発言語: Java (Java SE 21), SQL
+データベース: MySQL 9.2
+Webサーバー: Apache Tomcat 10
 
 2. 動作環境
 本アプリケーションを動作させるには、以下の環境が必要です。
-JDK: 17 以降
-IDE: Eclipse IDE for Enterprise Java and Web Developers
-Webサーバー: Apache Tomcat 10.1
-データベース: MySQL 8.0
+JDK: 21
+IDE: Eclipse Eclipse IDE for Java Developers 2025-06 (4.36.0)
+Webサーバー: Apache Tomcat 10
+データベース: MySQL 9.2
 
 3. セットアップ手順
 
@@ -22,9 +22,9 @@ Webサーバー: Apache Tomcat 10.1
 
 	3.2. データベース接続情報の確認
 	src/main/java/com/example/hiroshima/db/DBManager.java ファイルを開き、以下の3つの値が自身のMySQL環境と一致しているか確認してください。
-	private static final String URL = "jdbc:mysql://localhost/hiroshima_quiz_db";
-	private static final String USER = "your_username"; // ユーザー名 (例: "root")
-	private static final String PASSWORD = "your_password"; // MySQLパスワード
+	private static final String URL = "jdbc:mysql://localhost;3306/hiroshima_quiz_db";
+	private static final String USER = "username"; // ユーザー名 (例: "root")
+	private static final String PASSWORD = "password"; // MySQLパスワード
 
 	3.3. Eclipseへのプロジェクトのインポートと実行
 	Eclipseで本プロジェクトをインポートします。
